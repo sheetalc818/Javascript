@@ -1,0 +1,5 @@
+{ 
+    "stock":  [{"stockName": "Google",   "numberOfShare":2,"price":5000},
+               {"stockName": "Microsoft","numberOfShare":1,"price":4000},
+               {"stockName": "Delloite", "numberOfShare":3,"price":2000}]
+}
