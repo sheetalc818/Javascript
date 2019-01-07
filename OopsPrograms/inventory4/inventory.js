@@ -29,9 +29,10 @@ function menue()
     console.log("Inventory Management-->");
     console.log(" 1: Insert\n 2: Delete\n 3: Exit");
 
+    //asking user to enter the choice
     var choice = prompt("Please enter your choice: ");
 
-    //Insert
+    //Insert  Operation
     if (choice == '1') 
     {
         nameRestriction = /[a-z]/ig;
@@ -76,10 +77,10 @@ function menue()
 
     }
 
-    //Delete
+    //Delete Operation
     else if (choice == '2') 
     {
-
+        //asking user to enter product name
         var del = prompt("Please enter the name of product you want to delete from the inventory: ");
         
         //deleting item from the jason file

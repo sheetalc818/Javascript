@@ -1,3 +1,10 @@
+
+/**
+* @description Program for demonstrating hashing function
+* @author      Sheetal Chaudhari
+* @since       30/12/2018
+**/
+
 "use strict"
 
 var prompt = require('prompt-sync')();

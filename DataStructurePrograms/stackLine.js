@@ -1,3 +1,10 @@
+
+/**
+* @description Program for demonstrating stack
+* @author      Sheetal Chaudhari
+* @since       31/12/2018
+**/
+
 var show = require('util');
 
 class Node

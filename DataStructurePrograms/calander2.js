@@ -1,27 +1,40 @@
+
+/**
+* @description Program for demonstrating calander using queueLInklist
+* @author      Sheetal Chaudhari
+* @since       28/12/2018
+**/
+
+//require method of utility
 var Utility = require('../utility/utility');
+
+//util require for formatting
 var show = require('util');
+
+//method from queue require 
 var linkedQueue = require('./queueLine');
 
-function calender(){
+function calender()
+{
 
-var linkedqueue = new linkedQueue.QueuedLinkedList;
-var linkedqueue2 = new linkedQueue.QueuedLinkedList;
+    var linkedqueue = new linkedQueue.QueuedLinkedList;
+    var linkedqueue2 = new linkedQueue.QueuedLinkedList;
 
-var months = 
-[
+    //month array 
+    var months = 
+    [
     "",
     "January", "February", "March",
     "April", "May", "June",
     "July", "August", "September",
     "October", "November", "December"
-];
+    ];
 
-// days[i] = number of days in month i
-var days = [
-    0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-];
+    // days[i] = number of days in month i
+    var days = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-var day = ["S", "M", "Tu", "W", "Th", "F", "S"];
+    //day array
+    var day = ["S", "M", "Tu", "W", "Th", "F", "S"];
 
 try {
     var month = + process.argv[2];

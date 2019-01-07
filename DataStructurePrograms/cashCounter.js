@@ -1,3 +1,9 @@
+
+/**
+* @description Program for demonstrating cash counter
+* @author      Sheetal Chaudhari
+* @since       28/12/2018
+**/
 "use strict"
 
 var prompt = require('prompt-sync')();
@@ -21,8 +27,9 @@ function Queue()
   
         var val = prompt("Please enter the number of customers: ");
         
-    if(isNaN() && val.search(re)==-1)
-    {
+        //checking for valide input
+        if(isNaN() && val.search(re)==-1)
+        {
         for(var i=0;i<val;i++)
         {
             //sending customers in a queue
@@ -32,6 +39,7 @@ function Queue()
         console.log("The token number of people in the queue is ==> ");
         queue.printQueue();
     
+        //checking queue size
         while(queue.size()>0)
         {
             var accountNum = prompt("Please enter your account number ( A value between 100 and 500 ): ");
@@ -61,7 +69,8 @@ function Queue()
                     }
                     break;
            
-                    case '2': var deposit = prompt("Enter the amount to deposit: ");
+                    case '2'://deposit
+                              var deposit = prompt("Enter the amount to deposit: ");
                               console.log("The amount deposited is "+deposit);
                               Balance1 = Number(amount) + Number(deposit);
                               console.log("Your account balance is: "+Balance1);
@@ -96,7 +105,7 @@ function Queue()
         console.log("Invalid Input");
     }
 }
-Queue()
+Queue();
 	
 
 	

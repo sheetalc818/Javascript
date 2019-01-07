@@ -1,3 +1,9 @@
+
+/**
+* @description Program for demonstrating calander using 2d array
+* @author      Sheetal Chaudhari
+* @since       28/12/2018
+**/
 var take = require('util');
 var Utility = require('../utility/utility');
 var readline = require('readline-sync');
