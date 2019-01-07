@@ -12,7 +12,7 @@ var fs=require('fs');
 
 function hashFunc()
 {
-    var arr = new Array(10),array=[],arr1=[],arr2=[],arr3=[],arr4=[],arr5=[],arr6=[],arr7=[],arr8=[],arr9=[],arr10=[],arr11=[];
+    var arr = new Array(10),array=[],arr1=[],arr2=[],arr3=[],arr4=[],arr5=[],arr6=[],arr7=[],arr8=[],arr9=[],arr10=[];arr11=[];
     var list = new utility();
 
     //reading the hash.txt file into this programe

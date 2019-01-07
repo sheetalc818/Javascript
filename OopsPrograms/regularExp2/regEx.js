@@ -1,7 +1,7 @@
 /**
- * @purpose Program for Regular Expression Demonstration by using REGEX 
- * @author Sheetal Chaudhari
- * @since 04/01/2019
+ * @purpose Program for Regular Expression Demonstration using REGEX 
+ * @author  Sheetal Chaudhari
+ * @since   04/01/2019
  **/
 
 function validate()
@@ -28,6 +28,8 @@ function validate()
 
     //asking user to enter a name & stored in name variable
     var name = prompt("Please enter your name: ");
+
+    //checking for valid input
     if(nameRestriction.test(name) && name.length>3) 
     {
         result = str.replace(/<<name>>/,name);
@@ -40,6 +42,8 @@ function validate()
 
     //asking user to enter a fullname & stored in fullName variables
     fullName = prompt("Please enter your full name: ");
+
+    //checking for valid input
     if(nameRestriction.test(fullName) && fullName.length>3)
     {
         result1 = result.replace(/<<full name>>/,fullName);
@@ -52,6 +56,7 @@ function validate()
 
     //asking user to enter a contactNUmber & stored in contactNum
     var contactNum = prompt("Please enter your contact number: ");
+    //checking for valid input
     if(contactRestriction.test(contactNum) == true && contactNum.length == 10)
     {
         result2 = str1.replace(/<<91­xxxxxxxxxx>>/,contactNum);
@@ -71,4 +76,6 @@ function validate()
     result3 = str2.replace(/<<dd-mm-yyyy>>/, date);
     console.log(result3);   
 }
+
+//calling function
 validate();
