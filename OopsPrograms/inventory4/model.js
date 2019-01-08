@@ -1,3 +1,4 @@
+
 class Stock
 {
 	Stock(stockName,stockPrice,stockNumber)
@@ -8,37 +9,37 @@ class Stock
 	}
     getStockName()
     {
-		return stockName;
-	}
+			return stockName;
+	  }
 
     getStockPrice()
     {
-		return stockPrice;
-	}
+			return stockPrice;
+		}
 
     getStockWeight()
     {
-		return stockWeight;
-	}
+			return stockWeight;
+		}
 
     setStockName(stockName)
     {
-		this.stockName=stockName;
-	}
+			this.stockName=stockName;
+		}
 
     setStockPrice(stockPrice)
     {
-		this.stockPrice=stockPrice;
-	}
+			this.stockPrice=stockPrice;
+		}
 
     setStockWeight(stockWeight)
     {
-		this.stockWeight=stockWeight;
-	}
+			this.stockWeight=stockWeight;
+		}
 
     toString()
     {
-		return stockName+" "+stockPrice+" "+stockWeight+"  "+(stockPrice*stockWeight)+" "+"\n";
-	}
+			return stockName+" "+stockPrice+" "+stockWeight+"  "+(stockPrice*stockWeight)+" "+"\n";
+		}
 }
 module.exports = Stock

@@ -36,40 +36,49 @@ function calender()
     //day array
     var day = ["S", "M", "Tu", "W", "Th", "F", "S"];
 
-try {
-    var month = + process.argv[2];
-    var year = + process.argv[3];
+    try 
+    {
+        //command line arguments
+        var month = + process.argv[2];
+        var year = + process.argv[3];
 
-    var newMonth = parseInt(month);
-    var newYear = parseInt(year);
+        //parsing input
+        var newMonth = parseInt(month);
+        var newYear = parseInt(year);
 
-    if (newMonth < 1 || newMonth > 12) throw "Month value is Invalid , Please Enter value in range 1-12"
-    if (newMonth == undefined || newYear == undefined) throw "No input found"
-    if (isNaN(newMonth) || isNaN(newYear)) throw "No input or String found , Please Enter a valid input";
-    if (newMonth % 1 != 0 || newYear % 1 != 0) throw "Number required , Floating value found"
+        //validation of input
+        if (newMonth < 1 || newMonth > 12) throw "Month value is Invalid , Please Enter value in range 1-12"
+        if (newMonth == undefined || newYear == undefined) throw "No input found"
+        if (isNaN(newMonth) || isNaN(newYear)) throw "No input or String found , Please Enter a valid input";
+        if (newMonth % 1 != 0 || newYear % 1 != 0) throw "Number required , Floating value found"
 
-    var d = Utility.day(newMonth, 1, newYear);
+        //getting day
+        var d = Utility.day(newMonth, 1, newYear);
+        
+        //checking for 
+        if (newMonth == 2 && Utility.isLeapYear(newYear)) days[newMonth] = 29;
 
-    if (newMonth == 2 && Utility.isLeapYear(newYear)) days[newMonth] = 29;
+        console.log("     " + months[newMonth] + " " + year);
 
-    console.log("     " + months[newMonth] + " " + year);
+        for (let i = 0; i < 7; i++) 
+        {
+            linkedqueue.enque(day[i]);
+        }
+        linkedqueue.display2();
 
-    for (let i = 0; i < 7; i++) {
-        linkedqueue.enque(day[i]);
-    }
-    linkedqueue.display2();
+        for (let i = 0; i < d; i++) 
+        {
+            linkedqueue2.enque(" ");
+        }
 
-    for (let i = 0; i < d; i++) {
-        linkedqueue2.enque(" ");
-    }
+        for (let i = 1; i <= days[newMonth]; i++) 
+        {
+            linkedqueue2.enque(i);
+        }
 
-    for (let i = 1; i <= days[newMonth]; i++) {
-        linkedqueue2.enque(i);
-    }
-
-    linkedqueue2.displayCalender(d);
-} catch (err) {
-    console.log("Error: " + err);
+        linkedqueue2.displayCalender(d);
+    } 
+    catch (err) {console.log("Error: " + err);}
 }
-}
+//calling calender function
 calender();

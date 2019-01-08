@@ -1,8 +1,11 @@
-/**
- * @purpose Program for Regular Expression Demonstration using REGEX 
- * @author  Sheetal Chaudhari
- * @since   04/01/2019
- **/
+
+/***********************************************************************************
+ *  @Purpose        : Create a JSON file demonstrating regular EXpressions
+ *  @file           : regEx.js
+ *  @author         : Sheetal Chaudhari
+ *  @version        : 1.30.1
+ *  @since          : 04-01-2019
+ **********************************************************************************/
 
 function validate()
 {
@@ -72,7 +75,7 @@ function validate()
 
     //uses Date function for getting date,month and year
     var d = new Date();
-    var date = d.getDate()+"/"+d.getMonth()+"/"+d.getFullYear();
+    var date = d.getDate()+"/"+d.getMonth()+1+"/"+d.getFullYear();
     result3 = str2.replace(/<<dd-mm-yyyy>>/, date);
     console.log(result3);   
 }

@@ -1,4 +1,10 @@
 
+/**
+* @description Program for demonstrating program for prime numbers 
+* @author      Sheetal Chaudhari
+* @since       28/12/2018
+**/
+
 module.exports = 
 {
 

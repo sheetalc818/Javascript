@@ -1,68 +1,213 @@
-/**
-* @description  Program for demonstrating inventory data management system using JSON 
-* @author       Sheetal Chaudhari
-* @since        03/01/2019
-**/
 
-//using prompy-sync asking user to enter the input
-var prompt = require('prompt-sync')();
+/***********************************************************************************
+ *  @Purpose        : Create a JSON file having Inventory Details for Rice, Pulses and 
+ *                    Wheats with properties name, weight, price per kg.
+ *  @file           : inventDataMgt.js
+ *  @author         : Sheetal Chaudhari
+ *  @version        : 1.30.1
+ *  @since          : 04-01-2019
+ **********************************************************************************/
+
 
 //uses for handling all the file operations
-var fs=require('fs');
+var fs = require('fs');
 
-function inventory()
+//using prompy-sync asking user to enter the input
+var read = require('readline-sync');
+
+//reading data from a json file
+var data = fs.readFileSync('./inventory.json', 'utf-8');
+
+//printing data from json file
+console.log("Data in a json file is\n" + data);
+
+//for holding the object 
+var arrayOfObjects = [];
+arrayOfObjects = JSON.parse(data);
+
+console.log(" ");
+var totalPrice = 1;
+
+function menue() 
 {
+        console.log(" ");
+        //menue
+        console.log("Inventory Management-->");
+        console.log("1: Add to inventory");
+        console.log("2: Delete from inventory");
+        console.log("3: Save");
+        console.log("4: Exit");
+        var choice = read.question("Please enter your choice: ");
 
-//reading data from a file    
-var data = fs.readFileSync('./inventory.json');
+        //Insert
+        if (choice == '1') 
+        {
+            nameRestriction = /[a-z]/ig;
 
-//parsing data from string to Json object
-var jsonGrocery = JSON.parse(data);
+            var num = read.question("Enter the value for the stock->");
 
-//menue
-console.log("Inventory Data Management\n");
-console.log("1: Rice");
-console.log("2: Wheat");
-console.log("3: Pulses");
+            for (var i = 0; i < num; i++) 
+            {
+                var Name = read.question("Please enter the item you want to add: ");
+                var weight = read.question("Please enter the number of  Kgs: ");
+                var price = read.question("Please enter the price per Kg.: ");
 
-//asking user for choice
-var item = prompt("Please enter your choice: ");
+                if (nameRestriction.test(Name) && isNaN(weight) != -1 && isNaN(price) != -1) 
+                {
+                    console.log('Enter into perticular object:');
+                    console.log("1: Rice");
+                    console.log("2: Wheat");
+                    console.log("3: Pulses");    
 
-switch(parseInt(item))
-{
+                    var choice2 = read.question('Enter choice: ');
 
-    case 1:
-    //case 1 for Rice
-    var weight = prompt("Please enter the weight of rice you want to purchase: ");
-    
-    for(var i=0;i<jsonGrocery.Rice.length;i++)
-    {
-        console.log("Per Kg. of "+jsonGrocery.Rice[i].name+" costs "+jsonGrocery.Rice[i].price+" and for "+weight+" Kgs. costs "+weight*jsonGrocery.Rice[i].price);
-    }
-    break;
+                    //pushing data in resepective arrayOfObject
+                    if(choice2 == 1)
+                    {
+                        arrayOfObjects.Rice.push({
+                            name : Name,
+                            weight: weight,
+                            price : price
+                        })
+                    }
+                    if(choice2 == 2)
+                    {
+                        arrayOfObjects.Wheats.push({
+                            name : Name,
+                            weight: weight,
+                            price : price
+                        })
 
-    case 2:
-    //case 2 for Wheat
-    var weight = prompt("Please enter the weight of wheat you want to purchase: ");
+                    }
+                    if(choice2 == 3)
+                    {
+                        arrayOfObjects.Pulses.push({
+                            name : Name,
+                            weight: weight,
+                            price : price
+                        })
 
-    for(var i=0;i<jsonGrocery.Wheat.length;i++)
-    {
-        console.log("Per Kg. of "+jsonGrocery.Wheat[i].name+" costs "+jsonGrocery.Wheat[i].price+" and for "+weight+" Kgs. costs "+weight*jsonGrocery.Wheat[i].price);
-    }
-    break;
+                    }
+                }
+                else 
+                {
+                    console.log("Invalid input for name,weight and price!");
+                    return false;
+                }
 
-    case 3:
-    //case 3 for pulses
-    var weight = prompt("Please enter the weight of pulses you want to purchase: ");
+                //printing arrayOfObjects
+                console.log(arrayOfObjects);
+                console.log("");
 
-    for(var i=0;i<jsonGrocery.Pulses.length;i++)
-    {
-        console.log("Per Kg. of "+jsonGrocery.Pulses[i].name+" costs "+jsonGrocery.Pulses[i].price+" and for "+weight+" Kgs. costs "+weight*jsonGrocery.Pulses[i].price);
-    }
-    break;
+                //calculating price for rice
+                for(var i=0;i<arrayOfObjects.Rice.length;i++)
+                {
+                console.log("Per Kg. of "+arrayOfObjects.Rice[i].name+" costs "+arrayOfObjects.Rice[i].price+" and for "+arrayOfObjects.Rice[i].weight+" Kgs. costs "+arrayOfObjects.Rice[i].weight*arrayOfObjects.Rice[i].price);
+                }
 
-    default: console.log("Please select a valid item!!");
+                console.log(" ");
+                //calculating price for wheat
+                for(var i=0;i<arrayOfObjects.Wheats.length;i++)
+                {
+                console.log("Per Kg. of "+arrayOfObjects.Wheats[i].name+" costs "+arrayOfObjects.Wheats[i].price+" and for "+arrayOfObjects.Wheats[i].weight+" Kgs. costs "+arrayOfObjects.Wheats[i].weight*arrayOfObjects.Wheats[i].price);
+                }
+
+                console.log(" ");
+                //calculating price for pulses
+                for(var i=0;i<arrayOfObjects.pulses.length;i++)
+                {
+                console.log("Per Kg. of "+arrayOfObjects.pulses[i].name+" costs "+arrayOfObjects.pulses[i].price+" and for "+arrayOfObjects.pulses[i].weight+" Kgs. costs "+arrayOfObjects.pulses[i].weight*arrayOfObjects.pulses[i].price);
+                }
+                    
+                console.log("");
+                //calling menue function
+                menue();
+            }
+
+        }
+
+        //Delete item from the JSON file
+        else if (choice == '2') 
+        {
+            console.log("1: Rice");
+            console.log("2: Wheat");
+            console.log("3: Pulses");  
+
+            //asking user to enter the item for deleting
+            var del = read.question('please enter the choice of product you want to delete:');
+                    
+            //if del=rice
+            if(del == 1)
+            {
+                var attribute = read.question('name of item you want to delete in rice:');
+
+                for(var i=0;i<arrayOfObjects.Rice.length;i++)
+                {
+                    if(attribute === arrayOfObjects.Rice[i].name)
+                    {
+                        console.log('deleted element',attribute);
+                        console.log('search elemetn in array: ',arrayOfObjects.Rice[i].name);
+                        arrayOfObjects.Rice.splice(i, 1);
+                    }
+                }
+                 console.log("after deletion data is\n",arrayOfObjects);
+                 
+                
+            }
+
+            //if del=wheat
+            if(del == 2)
+            {
+                var attribute = read.question('name of item you want to delete in Wheat:');
+
+                for(var i=0;i<arrayOfObjects.Wheats.length;i++)
+                {
+                    if(attribute === arrayOfObjects.Wheats[i].name)
+                    {
+
+                        console.log('deleted element',attribute);
+                        console.log('search elemetn in array: ',arrayOfObjects.Wheats[i].name);
+                        arrayOfObjects.Wheats.splice(i, 1);
+                    }
+                }
+                console.log("after deletion data is\n",arrayOfObjects);
+            }
+
+            //if del=pulses
+            if(del == 3)
+            {
+                var attribute = read.question('name of item you want to delete in pules:');
+                for(var i=0;i<arrayOfObjects.pulses.length;i++)
+                {
+                    if(attribute === arrayOfObjects.pulses[i].name)
+                    {
+                        console.log('deleted element',attribute);
+                        console.log('search elemetn in array: ',arrayOfObjects.pulses[i].name);
+                        arrayOfObjects.pulses.splice(i, 1);
+                    }
+                }
+                console.log("after deletion data is\n",arrayOfObjects);
+            }
+            menue();
+        }
+
+        //saving result in inventory.json file
+        else if(choice == '3')
+        {
+            fs.writeFileSync('./inventory.json', JSON.stringify(arrayOfObjects),'utf-8', function(err){
+                if (err) throw err
+                console.log('Done!');
+            })
+            menue();
+        }
+        
+        //exit();
+
+        else if(choice == '4')
+        {
+            process.exit();
+        }
 }
-}
-inventory();
+//calling function
+menue();
 

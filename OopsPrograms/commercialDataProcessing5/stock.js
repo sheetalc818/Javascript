@@ -1,9 +1,13 @@
 
-/**
-* @description Program for Commercial Data Processing 
-* @author      Sheetal Chaudhari
-* @since       06/01/2019
-**/
+/***********************************************************************************
+ *  @Purpose        : Create a JSON file StockAccount.java implements a data type that 
+ *                    might be used by a financial institution to keep track of customer 
+ *                    information.
+ *  @file           : stock.js
+ *  @author         : Sheetal Chaudhari
+ *  @version        : 1.30.1
+ *  @since          : 04-01-2019
+ **********************************************************************************/
 
 "use strict"
 
@@ -33,6 +37,7 @@ class Account
         this.report=[];
     }
 
+  
     //buy() function Add shares of stock to account
     buy()
     {
@@ -40,28 +45,36 @@ class Account
 
         for(var i=0;i<num;i++)
         {
+            var nameRestriction= /[a-z]/ig;
+            //asking user to enter inputs
             var Name = prompt("Please enter the item purchased: ");
-            var number = prompt("Please enter the number of items purchased: ");
+            var number = prompt("Please enter the weight of items purchased: ");
             var price = prompt("Please enter the price per item: ");
-            
+
+            if (nameRestriction.test(Name) && isNaN(number) != -1 && isNaN(price) != -1) 
+            {
+            //adding user input into the arrayOfObject
             arrayOfObjects.Person.push({
                                             Stockname: Name,
                                             Number: number,
                                             Price: price
                                 })
-
-            totalPrice = parseInt(num) * parseInt(price);
+            }
+            else
+            {
+                console.log("Invalid input, Enter proper input!!");
+            }
+            var totalPrice = parseInt(num) * parseInt(price);
 
             console.log("The total price of all the stocks is "+JSON.stringify(totalPrice));
             
             console.log(arrayOfObjects);
     
+            //writing arrayOfObject into the json file
             fs.writeFileSync('./stock.json', JSON.stringify(arrayOfObjects), 'utf-8', function(err) 
             {
                 if (err) throw err
-                {
-                    console.log('Done!');
-                }
+                console.log('Done!');
             }) 
         } 
     }
@@ -72,21 +85,18 @@ class Account
         var del = prompt("Please enter the product name you want to purchase: ");
     
         //deleting item from the jason file
-        for (var i = 0; i < arrayOfObjects.length; i++) 
+        for(var i=0;i<arrayOfObjects.Person.length;i++)
         {
-            if (del == arrayOfObjects[i].Stockname) 
+            if(del === arrayOfObjects.Person[i].Stockname)
             {
-                var index = arrayOfObjects.indexOf(arrayOfObjects[i]);
-                arrayOfObjects.splice(index, 1);
+                console.log('deleted element',del);
+                console.log('search elemetn in array: ',arrayOfObjects.Person[i].Stockname);
+                arrayOfObjects.Person.splice(i, 1);
             }
         }
-        console.log("after deletion data is");
-        arrayOfObjects.forEach(element =>{console.log(element);});
-
-        fs.writeFileSync('./stock.json', JSON.stringify(arrayOfObjects),'utf-8', function(err)
-        {
-            if (err) throw err
-            console.log('Done!');
+         console.log("after deletion data is\n",arrayOfObjects);
+        
+         fs.writeFileSync('./stock.json', JSON.stringify(arrayOfObjects),'utf-8', function(){console.log('Done!');
         }) 
     }
 
@@ -103,7 +113,8 @@ class Account
     //accountReport()-print the report 
     accountReport()
     {
-        console.log("a");
+        var report=[];
+        //console.log("a");
         for(var j=0;j<arrayOfObjects.Person.length;j++)
         {
             report.push(arrayOfObjects.Person[j]);
@@ -112,9 +123,11 @@ class Account
     }
 }
 
+function menue()
+{
     //creating object of Account class
     var s = new Account();
-    var arrayOfObjects,totalPrice=1, amount =0,report=[];
+    var arrayOfObjects,totalPrice=1, amount =0;
 
     console.log("***************Welcome to stock account manager***************")
     console.log("1: Buy stock");
@@ -128,15 +141,19 @@ class Account
     switch(parseInt(choice))
     {
         case 1: s.buy();
+                menue();
                 break;
 
         case 2: s.valueOf();
+                menue();
                 break;
 
         case 3: s.sell();
+                menue();
                 break;
 
         case 4: s.accountReport();
+                menue();
                 break;
 
         case 5: console.log("Exit!!");
@@ -145,6 +162,8 @@ class Account
         default: console.log("Invalid Input!");
                  break;
     }
+}
+menue();
 
 
 

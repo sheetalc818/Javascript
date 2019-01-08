@@ -1,0 +1,16 @@
+{
+    "Person": 
+    [{
+            "Name"      : "Sheetal",
+            "LastName"  : "Chaudhari",
+            "Address"   :
+                    {
+                        "Street": "8",
+                        "City": "Dhule",
+                        "State": "Maharstra",
+                        "Nation": "india",
+                        "Zip": "424001",
+                        "PhoneNum": "9902020792"
+                    }
+        }]
+}

@@ -1,9 +1,12 @@
-/**
-* @description Program for maintain DateTime of the transaction in a Queue implemented 
-*              using Linked List to indicate when the transactions were done. 
-* @author      Sheetal Chaudhari
-* @since       05/01/2019
-**/
+/***********************************************************************************
+ *  @Purpose        : Create a JSON file  maintain DateTime of the transaction in a 
+ *                    Queue implemented using Linked List to indicate when the transactions
+ *                    were done.
+ *  @file           : stock.js
+ *  @author         : Sheetal Chaudhari
+ *  @version        : 1.30.1
+ *  @since          : 06-01-2019
+ **********************************************************************************/
 
 var prompt = require('prompt-sync')();
 var utility = require('./utilityQueue');

@@ -1,9 +1,13 @@
- /**
- * @purpose Program to read in Stock Names, Number of Share, Share Price and Print a 
- *          Stock Report with total value of each Stock and the total value of Stock.
- * @author  Sheetal Chaudhari
- * @since   04/01/2019
- **/
+ 
+ /***********************************************************************************
+ *  @Purpose        : Create a JSON file to read in Stock Names, Number of Share, Share 
+ *                    Price. Print a Stock Report with total value of each Stock and the 
+ *                    total value of Stock.
+ *  @file           : stock.js
+ *  @author         : Sheetal Chaudhari
+ *  @version        : 1.30.1
+ *  @since          : 04-01-2019
+ **********************************************************************************/
 
 "use strict"
 

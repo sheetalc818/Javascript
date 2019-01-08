@@ -1,3 +1,10 @@
+
+/**
+* @description Program for demonstrating using queue
+* @author      Sheetal Chaudhari
+* @since       28/12/2018
+**/
+
 "use strict"
 
 class Queue

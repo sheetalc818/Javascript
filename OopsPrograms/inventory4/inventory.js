@@ -1,8 +1,12 @@
-/**
-* @description Program for Inventory Management 
-* @author      Sheetal Chaudhari
-* @since       03/01/2019
-**/
+
+/***********************************************************************************
+ *  @Purpose        : Create a JSON file The Inventory Manager will use InventoryFactory 
+ *                    to create Inventory Object from JSON.
+ *  @file           : inventory.js
+ *  @author         : Sheetal Chaudhari
+ *  @version        : 1.30.1
+ *  @since          : 04-01-2019
+ **********************************************************************************/
 
 //uses for handling all the file operations
 var fs = require('fs');
@@ -92,6 +96,8 @@ function menue()
                 arrayOfObjects.splice(index, 1);
             }
         }
+
+        //printing array after deletion
         console.log("after deletion data is");
         arrayOfObjects.forEach(element => 
         {

@@ -1,4 +1,10 @@
 
+/**
+* @description Program for demonstrating palindrom program using Dqueue
+* @author      Sheetal Chaudhari
+* @since       31/12/2018
+**/
+
 class deque 
 {
 

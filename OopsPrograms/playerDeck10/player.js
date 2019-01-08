@@ -1,11 +1,19 @@
-/** @description  program to create a Player Object having Deck of Cards, and having ability
- *                to Sort by Rank and maintain the cards in a Queue implemented using Linked
- *                List.Finally Print the Player and the Cards received by each Player.
- *  @author       Sheetal Chaudhari
- *  @since        07/01/2019
- **/
 
-var utilityQueue = require('../dateTimeQueue8/utilityQueue.js');
+
+/***********************************************************************************
+ *  @Purpose        : Create a JSON file to create a Player Object having Deck of Cards, 
+ *                    and having ability to Sort by Rank and maintain the cards in a 
+ *                    Queue.
+ *  @file           : player.js
+ *  @author         : Sheetal Chaudhari
+ *  @version        : 1.30.1
+ *  @since          : 07-01-2019
+ **********************************************************************************/
+
+var utilityQueue = require('../dateTimeQueue8/utilityQueue.js'); 
+var s= require('./utilitySort');
+
+//creating object of utilityQueue for each person(4)
 var queue =  new utilityQueue();
 var queue1 = new utilityQueue();
 var queue2 = new utilityQueue();
@@ -67,6 +75,7 @@ for (var j = 0; j < 9; j++)
         queue1.enqueue(arr);
         i++;
 }
+
     
 console.log("****** Cards receieved by Person 2 is ********");
 queue1.printQ();
@@ -94,7 +103,8 @@ for (var j = 0; j < 9; j++)
         queue3.enqueue(arr);
         i++;
 }
-    
+
+//remaining cards given to the 4th person
 console.log("****** Cards receieved by Person 4 is ********");
 queue3.printQ();
 

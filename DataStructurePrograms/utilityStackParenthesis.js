@@ -1,4 +1,11 @@
 
+
+/**
+* @description Program for demonstrating parenthesis using stack
+* @author      Sheetal Chaudhari
+* @since       28/12/2018
+**/
+
 "use strict"
 
 class Stack 

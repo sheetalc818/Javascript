@@ -1,3 +1,4 @@
+
 "use strict"
 
 class Node 
@@ -202,6 +203,7 @@ indexOf(element)
   return -1;
 }
 
+//printing list in sorted order
 sortList() 
 {
 
@@ -214,6 +216,7 @@ sortList()
   {
       for (let j = 0; j < n - i - 1; j++) 
       {
+          //if 1st element is less that 2nd element then swap
         if (parseInt(current1.element) < parseInt(current.element)) 
         {
             swap = current.element;
