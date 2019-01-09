@@ -9,10 +9,13 @@
  **********************************************************************************/
 
 
+
 //uses for handling all the file operations
 var fs = require('fs');
 
-//using prompy-sync asking user to enter the input
+var prompt=require('prompt-sync');
+
+//for interactively running to have a conversation with the user via a console(TTY)
 var read = require('readline-sync');
 
 //reading data from a json file
@@ -23,35 +26,32 @@ console.log("Data in a json file is\n" + data);
 
 //for holding the object 
 var arrayOfObjects = [];
+
 arrayOfObjects = JSON.parse(data);
 
 console.log(" ");
 var totalPrice = 1;
 
-function menue() 
-{
-        console.log(" ");
-        //menue
-        console.log("Inventory Management-->");
-        console.log("1: Add to inventory");
-        console.log("2: Delete from inventory");
-        console.log("3: Save");
-        console.log("4: Exit");
-        var choice = read.question("Please enter your choice: ");
 
+class inventory
+{       
+        
         //Insert
-        if (choice == '1') 
+        insert()
         {
-            nameRestriction = /[a-z]/ig;
+            //regular expression used for validation
+            var nameRestriction = /[a-z]/ig;
 
             var num = read.question("Enter the value for the stock->");
 
             for (var i = 0; i < num; i++) 
             {
+                //asking user to enter the input
                 var Name = read.question("Please enter the item you want to add: ");
                 var weight = read.question("Please enter the number of  Kgs: ");
                 var price = read.question("Please enter the price per Kg.: ");
 
+                //checking for proper input
                 if (nameRestriction.test(Name) && isNaN(weight) != -1 && isNaN(price) != -1) 
                 {
                     console.log('Enter into perticular object:');
@@ -62,6 +62,7 @@ function menue()
                     var choice2 = read.question('Enter choice: ');
 
                     //pushing data in resepective arrayOfObject
+                    //in rice
                     if(choice2 == 1)
                     {
                         arrayOfObjects.Rice.push({
@@ -70,6 +71,7 @@ function menue()
                             price : price
                         })
                     }
+                    //in Wheat
                     if(choice2 == 2)
                     {
                         arrayOfObjects.Wheats.push({
@@ -79,9 +81,10 @@ function menue()
                         })
 
                     }
+                    //in pulses
                     if(choice2 == 3)
                     {
-                        arrayOfObjects.Pulses.push({
+                        arrayOfObjects.pulses.push({
                             name : Name,
                             weight: weight,
                             price : price
@@ -127,7 +130,7 @@ function menue()
         }
 
         //Delete item from the JSON file
-        else if (choice == '2') 
+        delete()
         {
             console.log("1: Rice");
             console.log("2: Wheat");
@@ -151,8 +154,6 @@ function menue()
                     }
                 }
                  console.log("after deletion data is\n",arrayOfObjects);
-                 
-                
             }
 
             //if del=wheat
@@ -188,26 +189,41 @@ function menue()
                 }
                 console.log("after deletion data is\n",arrayOfObjects);
             }
-            menue();
+            
         }
 
         //saving result in inventory.json file
-        else if(choice == '3')
+        save()
         {
             fs.writeFileSync('./inventory.json', JSON.stringify(arrayOfObjects),'utf-8', function(err){
                 if (err) throw err
                 console.log('Done!');
             })
-            menue();
-        }
-        
-        //exit();
-
-        else if(choice == '4')
-        {
-            process.exit();
+           
         }
 }
-//calling function
-menue();
 
+function menue()
+{
+        var invent= new inventory();
+        
+        console.log("Inventory Management-->");
+        console.log("1: Add to inventory");
+        console.log("2: Delete from inventory");
+        console.log("3: Save");
+        console.log("4: Exit");
+
+        var choice=read.question("Enter the choice for operation");
+
+        switch(parseInt(choice))
+        {
+            case 1: invent.insert();
+                    break;
+            case 2: invent.delete();
+                    break;
+            case 3: invent.save();
+                    break;
+            default:console.log("Invalid Input!!");
+        }
+}
+menue();

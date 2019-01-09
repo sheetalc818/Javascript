@@ -3,7 +3,7 @@
  *  @file           : book.js
  *  @author         : Sheetal Chaudhari
  *  @version        : 1.30.1
- *  @since          : 08-01-2019
+ *  @since          : 09-01-2019
  **********************************************************************************/
 
 //require for asking user input
@@ -134,18 +134,18 @@ class Address
     }
 }
 
-function Address()
+function address()
 {
 
     var add= new Address();
     console.log("************Menue************");
     console.log("1: Create Address");
-    console.log("2: OpenProfile");
+    console.log("2: Open Profile");
     console.log("3: Exit");
 
     var choice= prompt("Enter choice to perform operation ");
 
-    switch(choice)
+    switch(parseInt(choice))
     {
         case 1: add.createAddress();
                 break;
@@ -157,5 +157,5 @@ function Address()
 
         default: console.log("Invalid Choice!!");
     }
-
 }
+address();

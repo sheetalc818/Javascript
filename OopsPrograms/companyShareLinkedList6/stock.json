@@ -1,4 +1,19 @@
-
 {
-    "customer":[]
+    "customer": [
+        {
+            "name": "rice",
+            "number": "1",
+            "price": "20"
+        },
+        {
+            "name": "bread flour",
+            "number": "1",
+            "price": "30"
+        },
+        {
+            "name": "red gram",
+            "number": "1",
+            "price": "10"
+        }
+    ]
 }

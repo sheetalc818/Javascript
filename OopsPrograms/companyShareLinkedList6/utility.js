@@ -1,4 +1,12 @@
 
+
+/***********************************************************************************
+*  @Purpose        : Program for LinkedList operations
+*  @file           : stock.js
+*  @author         : Sheetal Chaudhari
+*  @version        : 1.30.1
+*  @since          : 04-01-2019
+**********************************************************************************/
 "use strict"
 
 class Node 
@@ -27,16 +35,14 @@ class LinkedList
       // to store current node
       var current;
    
-      // if list is Empty add the
-      // element and make it head
+      // if list is Empty add the element and make it head
       if (this.head == null)
           this.head = node;
       else 
       {
           current = this.head;
    
-          // iterate to the end of the
-          // list
+          // iterate to the end of the list
           while (current.next) 
           {
               current = current.next;

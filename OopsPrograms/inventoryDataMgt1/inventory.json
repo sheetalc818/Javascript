@@ -1,11 +1,5 @@
 {
-    "Rice": [
-        {
-            "name": "basmati",
-            "weight": "5",
-            "price": "100"
-        }
-    ],
+    "Rice": [],
     "Wheats": [
         {
             "name": "Cake Flour",

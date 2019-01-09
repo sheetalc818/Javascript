@@ -13,6 +13,8 @@
 var utilityQueue = require('../dateTimeQueue8/utilityQueue.js'); 
 var s= require('./utilitySort');
 
+var q;
+
 //creating object of utilityQueue for each person(4)
 var queue =  new utilityQueue();
 var queue1 = new utilityQueue();
@@ -51,6 +53,21 @@ function shuffle()
         arr3[i] = temp;
     }
 }
+
+
+/*sort(q)
+{
+        var sort=require('../utility/utility.js');
+        var str="";
+        str=this.arr.getData();
+        var newArr=str.split(' ');
+        sort.insertionSort(newArr);
+        this.arr[playernum-1].makeBlank();
+        for (let index = 0; index < newArr.length; index++) 
+        {
+            this.addCards(playernum,newArr[index]);
+            
+}*/
 
 //for Adding cards in arr3  
 for (var j = 0; j < 9; j++)

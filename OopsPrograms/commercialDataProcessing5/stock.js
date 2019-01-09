@@ -23,21 +23,23 @@ var data =  fs.readFileSync('stock.json','utf-8');//, 'utf-8', function(err,stoc
 //parsing data from string to json object
 var arrayOfObjects = JSON.parse(data);
 
-class Account
+class User
 {
     /*Sometimes we need a "blueprint" for creating many objects of the same "type".
       Objects of the same type are created by calling the constructor function with
       the new keyword*/
 
-    constructor(arrayOfObjects,totalPrice, amount,report)
-    {
-        this.arrayOfObjects;
-        this.totalPrice = 1;
-        this.amount = 0;
-        this.report=[];
-    }
+      constructor(name,number,price)
+      {
+          this.Name = name;
+          this.Stockname = number;
+          this.Price = price;
+      }
+}
 
-  
+class Account extends User
+{
+    
     //buy() function Add shares of stock to account
     buy()
     {
@@ -47,23 +49,17 @@ class Account
         {
             var nameRestriction= /[a-z]/ig;
             //asking user to enter inputs
-            var Name = prompt("Please enter the item purchased: ");
+            var name = prompt("Please enter the item purchased: ");
             var number = prompt("Please enter the weight of items purchased: ");
             var price = prompt("Please enter the price per item: ");
 
-            if (nameRestriction.test(Name) && isNaN(number) != -1 && isNaN(price) != -1) 
-            {
+            var u = new User(name,number,price);
+
+            var detail =JSON.parse(u);
             //adding user input into the arrayOfObject
-            arrayOfObjects.Person.push({
-                                            Stockname: Name,
-                                            Number: number,
-                                            Price: price
-                                })
-            }
-            else
-            {
-                console.log("Invalid input, Enter proper input!!");
-            }
+            //arrayOfObjects.Person.push(u);
+            detail.Person.push(u);
+           
             var totalPrice = parseInt(num) * parseInt(price);
 
             console.log("The total price of all the stocks is "+JSON.stringify(totalPrice));
@@ -100,7 +96,7 @@ class Account
         }) 
     }
 
-    //total value of account dollars
+    //total value of account 
     valueOf()
     {
         for(var i=0;i<arrayOfObjects.Person.length;i++)

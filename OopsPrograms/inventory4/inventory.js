@@ -26,20 +26,13 @@ var arrayOfObjects = JSON.parse(data);
 console.log(" ");
 var totalPrice = 1;
 
-function menue() 
+class invent
 {
-    console.log(" ");
-    //menue
-    console.log("Inventory Management-->");
-    console.log(" 1: Insert\n 2: Delete\n 3: Exit");
-
-    //asking user to enter the choice
-    var choice = prompt("Please enter your choice: ");
-
     //Insert  Operation
-    if (choice == '1') 
+    insert()
     {
-        nameRestriction = /[a-z]/ig;
+        var nameRestriction = /[a-z]/ig;
+        
         var num = prompt("Enter the value for the stock->");
         for (var i = 0; i < num; i++) 
         {
@@ -76,13 +69,13 @@ function menue()
             //reading json file after insertion
             var data = fs.readFileSync('./inventory.json', 'utf-8');
             console.log("after insertion data is" + data);
-            menue();
+            
         }
 
     }
 
     //Delete Operation
-    else if (choice == '2') 
+    delete()
     {
         //asking user to enter product name
         var del = prompt("Please enter the name of product you want to delete from the inventory: ");
@@ -111,15 +104,31 @@ function menue()
         
         menue();
     }
+}
 
-    //Exit
-    else (choice == '3')
+function menue()
+{
+    var i= new invent();
+    
+    //menue
+    console.log("Inventory Management-->");
+    console.log(" 1: Insert\n 2: Delete\n 3: Exit");
+
+    //asking user to enter the choice
+    var choice = prompt("Please enter your choice: ");
+
+    switch(parseInt(choice))
     {
-        process.exit();
+        case 1: i.insert();
+                break;
+        case 2: i.delete();
+                break;
+        default:console.log("Invalid Input!!");
+
     }
 }
-//calling function
 menue();
+
 
 
 

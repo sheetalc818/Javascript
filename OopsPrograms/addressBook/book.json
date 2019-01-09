@@ -1,16 +1,1 @@
-{
-    "Person": 
-    [{
-            "Name"      : "Sheetal",
-            "LastName"  : "Chaudhari",
-            "Address"   :
-                    {
-                        "Street": "8",
-                        "City": "Dhule",
-                        "State": "Maharstra",
-                        "Nation": "india",
-                        "Zip": "424001",
-                        "PhoneNum": "9902020792"
-                    }
-        }]
-}
+{"Person":[{"Name":"Sheetal","LastName":"Chaudhari","Address":{"Street":"8","City":"Dhule","State":"Maharstra","Nation":"india","Zip":"424001","PhoneNum":"9902020792"}},{"Name":"sheetal","LastName":"chaudhari","Address":{"Street":"8","City":"dhule","State":"Maharastra","Nation":"Indian","Zip":"424001","PhoneNum":"7038053684"}},{"Name":"sheetal","LastName":"chaudhari","Address":{"Street":"8","City":"dhule","State":"maharastra","Nation":"indian","Zip":"424001","PhoneNum":"7038053684"}}]}
